@@ -3,7 +3,7 @@ title: "Assignment-b1-v3"
 output: github_document
 date: "2023-11-03"
 ---
-#Stats 545B Assignment B-1
+*Stats 545B Assignment B-1*
 
 The code and explanations following are intended to fulfil requirements for Stats545B assignment B-1.
 
@@ -20,7 +20,7 @@ library(devtools)
 library(roxygen2)
 ```
 
-###Exercise 1: Make a Function, & Exercise 2: Document your Function
+*Exercise 1: Make a Function, & Exercise 2: Document your Function*
 
 This is a simple function designed to quickly return some simple summary statistics.
 ```{r}
@@ -45,9 +45,9 @@ summary_stats <- function(x){
 }
 ```
 
-###Exercise 3: Include Examples
+*Exercise 3: Include Examples*
 
-#####Example 1:
+Example 1:
 
 Here is an example using the palmerspenguins::penguins dataset. Here, I filter penguins to only include the adelie species, then drop na values. Finally, I put the new dataset through the summary_stats function to return summary statistics about the adelie species' bill length.
 ```{r}
@@ -57,7 +57,7 @@ adelie <- penguins %>%
 
 summary_stats(adelie$bill_length_mm)
 ```
-#####Example 2:
+Example 2:
 
 Here is an example using the gapminder::gapminder dataset. In this example, I filter gapminder to only include European countries, then input this dataset into the function to return summary statistics for life expectancy in Europe.
 ```{r}
@@ -66,7 +66,7 @@ gap_Europe <- gapminder %>%
 
 summary_stats(gap_Europe$lifeExp)
 ```
-###Exercise 4: Test the Function
+*Exercise 4: Test the Function*
 
 These are the tests for my summary_statistics function.    
 ```{r}
