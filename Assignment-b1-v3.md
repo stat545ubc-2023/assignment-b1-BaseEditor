@@ -2,7 +2,7 @@ Assignment-b1-v3
 ================
 2023-11-03
 
-\#Stats 545B Assignment B-1
+*Stats 545B Assignment B-1*
 
 The code and explanations following are intended to fulfil requirements
 for Stats545B assignment B-1.
@@ -74,7 +74,7 @@ library(roxygen2)
 
     ## Warning: package 'roxygen2' was built under R version 4.3.2
 
-\###Exercise 1: Make a Function, & Exercise 2: Document your Function
+*Exercise 1: Make a Function, & Exercise 2: Document your Function*
 
 This is a simple function designed to quickly return some simple summary
 statistics.
@@ -101,9 +101,9 @@ summary_stats <- function(x){
 }
 ```
 
-\###Exercise 3: Include Examples
+*Exercise 3: Include Examples*
 
-\#####Example 1:
+Example 1:
 
 Here is an example using the palmerspenguins::penguins dataset. Here, I
 filter penguins to only include the adelie species, then drop na values.
@@ -120,7 +120,7 @@ summary_stats(adelie$bill_length_mm)
 
     ## [1] 13.90000 38.82397 38.85000
 
-\#####Example 2:
+Example 2:
 
 Here is an example using the gapminder::gapminder dataset. In this
 example, I filter gapminder to only include European countries, then
@@ -136,7 +136,7 @@ summary_stats(gap_Europe$lifeExp)
 
     ## [1] 38.17200 71.90369 72.24100
 
-\###Exercise 4: Test the Function
+*Exercise 4: Test the Function*
 
 These are the tests for my summary_statistics function.
 
@@ -146,7 +146,7 @@ test_that("Testing summary statistics function",{
           })
 ```
 
-    ## Test passed 😀
+    ## Test passed 😸
 
 ``` r
 test_that("Testing summary statistics no error",{
@@ -154,7 +154,7 @@ test_that("Testing summary statistics no error",{
           })
 ```
 
-    ## Test passed 🎉
+    ## Test passed 🥳
 
 ``` r
 test_that("Testing summary statistics error message",{
@@ -162,7 +162,7 @@ test_that("Testing summary statistics error message",{
           })
 ```
 
-    ## Test passed 🥳
+    ## Test passed 😀
 
 ``` r
 test_that("Testing summary statistics return length",{
@@ -170,4 +170,4 @@ test_that("Testing summary statistics return length",{
           })
 ```
 
-    ## Test passed 🥳
+    ## Test passed 🎊
