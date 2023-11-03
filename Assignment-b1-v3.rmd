@@ -1,0 +1,92 @@
+---
+title: "Assignment-b1-v3"
+output: github_document
+date: "2023-11-03"
+---
+#Stats 545B Assignment B-1
+
+The code and explanations following are intended to fulfil requirements for Stats545B assignment B-1.
+
+*Packages to load*
+```{r}
+library(tidyverse)
+library(testthat)
+library(dplyr)
+library(gapminder)
+library(digest)
+library(palmerpenguins)
+library(commonmark)
+library(devtools)
+library(roxygen2)
+```
+
+###Exercise 1: Make a Function, & Exercise 2: Document your Function
+
+This is a simple function designed to quickly return some simple summary statistics.
+```{r}
+#' Generate Summary Statistics
+#'
+#' @description This function allows you to produce simple summary statistics for numeric variables. The summary statistics returned are range, mean, and median.
+#'
+#' @param x A numeric variable of interest
+#'
+#' @return Range, mean, and median
+#'
+#' @examples
+#' summary_stats(penguins$bill_length_mm)
+#' summary_stats(gapminder$lifeExp)
+summary_stats <- function(x){
+  if(!is.numeric(x)) {
+    stop('Input is not of class numeric: Input must be of class numeric')}
+  range <- max(x) - min(x)
+  mean <- mean(x)
+  median <- median(x)
+  return(c(range, mean, median))
+}
+```
+
+###Exercise 3: Include Examples
+
+#####Example 1:
+
+Here is an example using the palmerspenguins::penguins dataset. Here, I filter penguins to only include the adelie species, then drop na values. Finally, I put the new dataset through the summary_stats function to return summary statistics about the adelie species' bill length.
+```{r}
+adelie <- penguins %>%
+  filter(species == "Adelie") %>%
+  drop_na()
+
+summary_stats(adelie$bill_length_mm)
+```
+#####Example 2:
+
+Here is an example using the gapminder::gapminder dataset. In this example, I filter gapminder to only include European countries, then input this dataset into the function to return summary statistics for life expectancy in Europe.
+```{r}
+gap_Europe <- gapminder %>%
+  filter(continent == "Europe")
+
+summary_stats(gap_Europe$lifeExp)
+```
+###Exercise 4: Test the Function
+
+These are the tests for my summary_statistics function.    
+```{r}
+test_that("Testing summary statistics function",{
+  expect_equal(summary_stats(adelie$bill_length_mm), c(max(adelie$bill_length_mm) - min(adelie$bill_length_mm), mean(adelie$bill_length_mm), median(adelie$bill_length_mm))) 
+          })
+```
+```{r}
+test_that("Testing summary statistics no error",{
+  expect_no_error(summary_stats(gapminder$lifeExp)) 
+          })
+```
+```{r}
+test_that("Testing summary statistics error message",{
+  expect_error(summary_stats(gapminder$country), "Input is not of class numeric: Input must be of class numeric") 
+          })
+```
+```{r}
+test_that("Testing summary statistics return length",{
+  expect_length(summary_stats(gapminder$lifeExp), 3) 
+          })
+```
+

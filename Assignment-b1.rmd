@@ -1,0 +1,45 @@
+---
+title: "Assignment B-1"
+output: html_document
+date: "2023-11-02"
+---
+
+#Stats 545B Assignment B-1
+
+The code and explanations following are intended to fulfil requirements for Stats545B assignment B-1.
+
+*Packages to load*
+```{r}
+library(tidyverse)
+library(testthat)
+library(dplyr)
+library(gapminder)
+library(digest)
+library(palmerpenguins)
+```
+
+###Excercise 1: Make a Function
+
+This is a simple function designed to return three summary statistics for a variable.
+```{r}
+range_mean <- function(x){
+  stopifnot(is.numeric(x))
+  range <- max(x) - min(x)
+  mean <- mean(x)
+  median <- median(x)
+  return(c(range, mean, median))
+}
+
+adelie <- penguins %>%
+  filter(species == "Adelie") %>%
+  drop_na()
+
+range_mean(adelie$bill_length_mm)
+
+
+bar_function <- function(x){
+  ggplot(aes(x)) +
+  geom_bar()
+}
+
+bar_function(penguins$species)
